@@ -1,0 +1,33 @@
+.container {
+    width: 90%;
+    max-width: 1200px;
+    min-width:250px;
+    padding:0;
+    background: #f8f9fa;
+    margin: 10px auto;
+    box-shadow: 5px 5px 30px #868e96;
+    border-radius: 10px;
+}
+
+.main {
+    min-height: 90vh;
+}
+
+.nav {
+    background-color: #0b7285;
+    color: #f8f9fa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin:0;
+    padding:15px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav > * {
+    margin: 0 10px;
+}
+
+.nav > *:hover {
+    text-decoration: underline wavy white;
+}
