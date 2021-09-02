@@ -5,7 +5,6 @@ type Data = {
   title: string;
   id: number;
 };
-
 interface BlogProps {
   data: Array<Data>;
 }
