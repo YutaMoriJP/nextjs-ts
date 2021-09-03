@@ -17,8 +17,13 @@ const AuthContextComponent = ({ children }) => {
 
   useEffect((): void => {
     netlifyIdentity.on("login", user => {
+      console.log("logged in");
       setUser(user);
       netlifyIdentity.close();
+    });
+    netlifyIdentity.on("logout", () => {
+      console.log("logged out");
+      setUser(null);
     });
     netlifyIdentity.init();
   }, []);

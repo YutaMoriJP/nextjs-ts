@@ -20,7 +20,7 @@ const Nav = ({ data }: NavProps) => {
           {name}
         </Link>
       ))}
-      <Login>LOGIN</Login>
+      <Login />
     </nav>
   );
 };

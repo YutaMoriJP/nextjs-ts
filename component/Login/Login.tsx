@@ -3,16 +3,12 @@ import { useAuth } from "../../stores/authContext";
 import Button from "../Button/Button";
 import styles from "./styles.module.css";
 
-interface LoginProps {
-  children: string;
-}
-
-const Login = ({ children }: LoginProps) => {
-  const { login } = useAuth();
+const Login = () => {
+  const { login, logout, user } = useAuth();
   return (
     <>
-      <Button onClick={login} className={styles.btn}>
-        {children}
+      <Button onClick={!user ? login : logout} className={styles.btn}>
+        {!user ? "LOGIN" : "LOGOUT"}
       </Button>
     </>
   );
