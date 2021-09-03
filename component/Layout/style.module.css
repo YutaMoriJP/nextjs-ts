@@ -5,7 +5,7 @@
     padding:0;
     background: #f8f9fa;
     margin: 10px auto;
-    box-shadow: 5px 5px 30px #868e96;
+    box-shadow: 5px 5px 40px #868e96;
     border-radius: 10px;
 }
 
@@ -24,7 +24,9 @@
     justify-content: center;
     align-items: center;
 }
-/*.nav > *:nth-last-child(2){margin-right: auto;}*/
+ .nav > *:nth-last-child(2){
+     margin-right: auto;
+}
 .nav > * {
     margin: 0 10px;
 }

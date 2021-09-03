@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <>
       <Button onClick={!user ? login : logout} className={styles.btn}>
-        {!user ? "LOGIN" : "LOGOUT"}
+        {user === undefined ? "Loading..." : !user ? "LOGIN" : "LOGOUT"}
       </Button>
     </>
   );

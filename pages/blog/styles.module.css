@@ -11,8 +11,9 @@
     background: lightcyan;
     padding:0;
     justify-content: space-between;
-    border-left: 20px solid blue;
+    border-left: 20px solid #0b7285;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding:20px;
+    box-shadow: 5px 5px 30px lightgray;
 }

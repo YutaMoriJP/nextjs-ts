@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import netlifyIdentity, { User } from "netlify-identity-widget";
 
 const initialContextValue = {
-  user: null,
+  user: undefined,
   login: () => {},
   logout: () => {},
   authReady: false,
