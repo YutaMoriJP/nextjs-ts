@@ -15,7 +15,7 @@ const AuthContext = createContext<AuthContextValue>(initialContextValue);
 const AuthContextComponent = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  useEffect((): void => {
+  useEffect((): (() => void) => {
     netlifyIdentity.on("login", user => {
       console.log("logged in");
       setUser(user);
@@ -26,6 +26,10 @@ const AuthContextComponent = ({ children }) => {
       setUser(null);
     });
     netlifyIdentity.init();
+    return () => {
+      netlifyIdentity.off("login");
+      netlifyIdentity.off("logout");
+    };
   }, []);
 
   const login = () => {
