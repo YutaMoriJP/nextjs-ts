@@ -19,7 +19,6 @@ const Layout = ({ children }: LayoutProps) => {
         data={[
           { name: "HOME", path: "/", id: 0 },
           { name: "BLOG", path: "/blog", id: 1 },
-          { name: "ABOUT", path: "/about", id: 2 },
         ]}
       />
       <main className={style.main}>{children}</main>

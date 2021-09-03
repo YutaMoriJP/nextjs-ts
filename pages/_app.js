@@ -3,6 +3,7 @@ import Layout from "../component/Layout/Layout";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { formatName } from "../util/formatName";
+import AuthContextComponent from "../stores/authContext";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -13,11 +14,12 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>{title}</title>
-      </Head>
-
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      </Head>{" "}
+      <AuthContextComponent>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>{" "}
+      </AuthContextComponent>
     </>
   );
 }

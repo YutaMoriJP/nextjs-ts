@@ -1,5 +1,7 @@
 import Link from "next/link";
 import style from "./style.module.css";
+import Login from "../Login/Login";
+
 interface NavData {
   path: string;
   name: string;
@@ -18,6 +20,7 @@ const Nav = ({ data }: NavProps) => {
           {name}
         </Link>
       ))}
+      <Login>LOGIN</Login>
     </nav>
   );
 };

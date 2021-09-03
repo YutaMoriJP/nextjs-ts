@@ -1,0 +1,16 @@
+.btn {
+    padding:20px;
+    background:transparent;
+    transition: transform 0.5s ease-in-out;
+    border:0;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background:seagreen;
+    color:white
+}
+
+.btn:active {
+    transform: scale(0.9)
+}

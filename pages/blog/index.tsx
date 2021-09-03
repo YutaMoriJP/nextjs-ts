@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { GetStaticProps } from "next";
+import styles from "./styles.module.css";
 
 type Data = {
   title: string;
@@ -22,18 +23,20 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
   };
 };
 
-const Blog = ({ data }: BlogProps) => {
-  useEffect(() => {
+const Blog = ({ data }: BlogProps): JSX.Element => {
+  useEffect((): (() => void) => {
     console.log("Blog was mounted");
-    return () => {
+    return (): void => {
       console.log("Blog WAS UNMOUNTED");
     };
   }, []);
   return (
     <>
-      <ul>
+      <ul className={styles.listContainer}>
         {data.map(({ title, id }) => (
-          <li key={id}>{title}</li>
+          <li key={id} className={styles.listItemContainer}>
+            {title}
+          </li>
         ))}
       </ul>
     </>
