@@ -6,16 +6,34 @@ const initialContextValue = {
   login: () => {},
   logout: () => {},
   authReady: false,
+  loading: true,
 };
 
 type AuthContextValue =
   | typeof initialContextValue
-  | { user: User; login: () => {}; logout: () => {}; authReady: false };
+  | {
+      user: User;
+      login: () => {};
+      logout: () => {};
+      authReady: false;
+      loading: false;
+    };
 
 const AuthContext = createContext<AuthContextValue>(initialContextValue);
 
 const AuthContextComponent = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User>(null);
+  const [loading, setLoading] = useState(true);
+  console.log("AuthContextComponent", user);
+
+  const login = () => {
+    netlifyIdentity.open();
+  };
+  const logout = () => {
+    netlifyIdentity.logout();
+  };
+
+  const contextValues = { user, login, logout, authReady: false, loading };
 
   useEffect((): (() => void) => {
     netlifyIdentity.on("login", user => {
@@ -28,22 +46,12 @@ const AuthContextComponent = ({ children }) => {
       setUser(null);
     });
     netlifyIdentity.init();
-
+    setLoading(false);
     return () => {
       netlifyIdentity.off("login");
       netlifyIdentity.off("logout");
     };
   }, []);
-
-  const login = () => {
-    netlifyIdentity.open();
-  };
-  const logout = () => {
-    netlifyIdentity.logout();
-  };
-
-  const contextValues = { user, login, logout, authReady: false };
-
   return (
     <AuthContext.Provider value={contextValues}>
       {children}

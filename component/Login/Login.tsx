@@ -4,11 +4,12 @@ import Button from "../Button/Button";
 import styles from "./styles.module.css";
 
 const Login = () => {
-  const { login, logout, user } = useAuth();
+  const { login, logout, user, loading } = useAuth();
+  console.log(`Login rendered`, user);
   return (
     <>
       <Button onClick={!user ? login : logout} className={styles.btn}>
-        {user === undefined ? "Loading..." : !user ? "LOGIN" : "LOGOUT"}
+        {loading ? "Loading..." : !user ? "LOGIN" : "LOGOUT"}
       </Button>
     </>
   );
