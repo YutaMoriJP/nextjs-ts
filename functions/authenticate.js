@@ -13,6 +13,7 @@ const asyncReq = async () => {
 exports.handler = async (event, context) => {
   const data = await asyncReq();
   const isAuthenticated = context.clientContext.user;
+
   if (isAuthenticated) {
     return {
       statusCode: 200,
@@ -28,6 +29,8 @@ exports.handler = async (event, context) => {
     body: JSON.stringify({
       msg: "To view the content please log in.",
       logged: false,
+      isAuthenticated,
+      clientContext: context.clientContext,
     }),
   };
 };
