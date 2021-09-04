@@ -3,7 +3,9 @@ import { GetStaticProps } from "next";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import asyncReq from "./util/asyncReq";
 
+//represents object data returned from API
 export type Data = {
   id: number;
   name: string;
@@ -12,28 +14,26 @@ export type Data = {
   phone: string;
   website: string;
 };
+//represents object returned by getStaticProps function
+interface StaticRes {
+  props: {
+    data: Data[];
+  };
+}
 
+//rerepsents props passed to component
 export interface BlogProps {
   data: Array<Data>;
 }
 
-const asyncReq = async () => {
-  const url = "https://jsonplaceholder.typicode.com/users/";
-  const res = await fetch(url, { method: "GET" });
-  const data = await res.json();
-  return data;
-};
-
-export const getStaticProps: GetStaticProps = async (): Promise<{
-  props: { data: Data[] };
-}> => {
+//data is fetched at build time and props are passed to component as { props: { data } }
+export const getStaticProps: GetStaticProps = async (): Promise<StaticRes> => {
   const data = await asyncReq();
   return { props: { data } };
 };
 
 const Blog = ({ data }: BlogProps): JSX.Element => {
-  const router = useRouter();
-  console.log(router);
+  const { pathname } = useRouter();
 
   useEffect((): (() => void) => {
     console.log("Blog was mounted");
@@ -41,12 +41,13 @@ const Blog = ({ data }: BlogProps): JSX.Element => {
       console.log("Blog WAS UNMOUNTED");
     };
   }, []);
+
   return (
     <>
       <ul className={styles.listContainer}>
         {data.map(({ username, id }) => (
           <li key={id} className={styles.listItemContainer}>
-            <Link href={`${router.pathname}/${id}`}>
+            <Link href={`${pathname}/${id}`}>
               <a>{username}</a>
             </Link>
           </li>

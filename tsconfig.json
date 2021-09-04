@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/_app.js", "stores/authContext.tsxx"  ],
+, "pages/_app.tsx", "stores/authContext.tsxx"  ],
   "exclude": [
     "node_modules"
   ]
