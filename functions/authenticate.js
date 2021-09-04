@@ -22,6 +22,8 @@ exports.handler = async (event, context) => {
         data,
         loggedIn: true,
       }),
+      isAuthenticated,
+      clientContext: context.clientContext,
     };
   }
   return {
