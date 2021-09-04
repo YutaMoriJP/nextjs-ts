@@ -34,6 +34,8 @@ const Home = () => {
         const headers = new Headers(
           user ? { Authorization: `Bearer ${user.token.access_token}` } : {}
         );
+        console.log("has authorization headers", headers.has("Authorization"));
+
         const res = await fetch("/.netlify/functions/authenticate", {
           method: "GET",
           headers,

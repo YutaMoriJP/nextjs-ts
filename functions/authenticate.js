@@ -12,27 +12,29 @@ const asyncReq = async () => {
 
 exports.handler = async (event, context) => {
   const data = await asyncReq();
-  const isAuthenticated = context.clientContext.user;
+  const { identity, user } = context.clientContext;
 
-  if (isAuthenticated) {
+  if (user) {
     return {
+      user,
+      clientContext: context.clientContext,
       statusCode: 200,
       body: JSON.stringify({
         msg: "connected successfully",
         data,
         loggedIn: true,
       }),
-      isAuthenticated,
-      clientContext: context.clientContext,
     };
   }
+
   return {
     statusCode: 401,
     body: JSON.stringify({
       msg: "To view the content please log in.",
       logged: false,
-      isAuthenticated,
+      user,
       clientContext: context.clientContext,
+      identity,
     }),
   };
 };
