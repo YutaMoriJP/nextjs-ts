@@ -57,7 +57,7 @@ const Home = () => {
   }, [user, authReady]);
   return (
     <>
-      {!loggedIn && <h1>{msg}</h1>}
+      {!loggedIn && <p>{msg}</p>}
       {loggedIn && <CardContainer data={data} />}
     </>
   );
