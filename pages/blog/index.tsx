@@ -3,7 +3,6 @@ import { GetStaticProps } from "next";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import asyncReq from "./util/asyncReq";
 
 export type Data = {
   id: number;
@@ -17,6 +16,13 @@ export type Data = {
 export interface BlogProps {
   data: Array<Data>;
 }
+
+const asyncReq = async () => {
+  const url = "https://jsonplaceholder.typicode.com/users/";
+  const res = await fetch(url, { method: "GET" });
+  const data = await res.json();
+  return data;
+};
 
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: { data: Data[] };

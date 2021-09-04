@@ -1,8 +1,14 @@
 import { useRouter } from "next/router";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { Data } from "./index";
-import asyncReq from "./util/asyncReq";
 import styles from "./styles.module.css";
+
+const asyncReq = async () => {
+  const url = "https://jsonplaceholder.typicode.com/users/";
+  const res = await fetch(url, { method: "GET" });
+  const data = await res.json();
+  return data;
+};
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<{
   paths: { params: { id: string } }[];
