@@ -14,19 +14,17 @@
 }
 
 .nav {
-    background-color: #0b7285;
+    background-color:  #1864ab;
     color: #f8f9fa;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin:0;
-    padding:15px;
+    padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-}
- .nav > *:nth-last-child(2){
-     margin-right: auto;
-}
+    max-height: 60px;
+} 
 .nav > * {
     margin: 0 10px;
 }

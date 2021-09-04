@@ -17,16 +17,18 @@ interface NavProps {
 }
 
 const Nav = ({ data }: NavProps) => {
-  const { message, onClose, open } = useAuth();
+  const { message, onClose, open, authReady } = useAuth();
   return (
     <>
       <nav className={style.nav}>
-        {data.map(({ path, name, id }: NavData) => (
-          <Link href={path} key={id}>
-            {name}
-          </Link>
-        ))}
-        <Login />
+        <>
+          {data.map(({ path, name, id }: NavData) => (
+            <Link href={path} key={id}>
+              {name}
+            </Link>
+          ))}
+          {authReady && <Login />}
+        </>
       </nav>
       {open && (
         <Message onClose={onClose} ms={2000}>

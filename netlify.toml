@@ -14,3 +14,8 @@ package = "netlify-plugin-a11y"
  
   # # Developer only
   # debugMode = true # extra logging for plugin developers
+ 
+[build]
+     functions = "functions"
+  
+ 

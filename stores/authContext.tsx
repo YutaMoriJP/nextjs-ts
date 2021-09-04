@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import netlifyIdentity, { User } from "netlify-identity-widget";
 import useOpen from "../useHooks/useOpen";
 
@@ -8,28 +8,33 @@ const initialContextValue = {
   onClose: () => {},
   user: undefined,
   authReady: false,
-  loading: true,
   message: "",
   open: false,
 };
 
 type AuthContextValue =
   | typeof initialContextValue
-  | (typeof initialContextValue & {
+  | {
+      login: () => void;
+      logout: () => void;
+      onClose: () => void;
       user: User;
-      login: () => {};
-      logout: () => {};
-      authReady: false;
-      loading: false;
-    });
+      message: string;
+      authReady: boolean;
+      open: boolean;
+    };
 
 const AuthContext = createContext<AuthContextValue>(initialContextValue);
+
+//custom useAuth hook, which allows for easier use of the Auth context
+export const useAuth = () => useContext(AuthContext);
 
 const AuthContextComponent = ({ children }) => {
   //stores user data when logged in
   const [user, setUser] = useState<User>(null);
-  //controls initial login/logout button, as user data is loaded asynchronously
-  const [loading, setLoading] = useState(true);
+
+  const [authReady, setAuthoReady] = useState(false);
+
   //controls message component when user logs in/out
   const { open, onClose, onOpen } = useOpen(false);
   //sets message to 'Logged in' and 'Logged out'
@@ -48,40 +53,46 @@ const AuthContextComponent = ({ children }) => {
     user,
     login,
     logout,
-    authReady: false,
-    loading,
+    authReady,
     open,
     onClose,
     message,
   };
+  //prevents 'logged in' message from appearing in the initial page load when user is already logged in
+  const initialLoginRef = useRef(true);
 
   useEffect((): (() => void) => {
     //called when user logs in, callback receives user object
     //which is set to the user state
     netlifyIdentity.on("login", user => {
-      console.log("logged in");
       setUser(user);
       //closes login modal
       netlifyIdentity.close();
       //state update for <Message/>
-      onOpen();
-      setMessage("Logged in");
+
+      //prevents message component from rendering in initial render(s)
+      if (!initialLoginRef.current) {
+        onOpen();
+        setMessage("Logged in");
+      }
+      initialLoginRef.current = false;
+      console.log("logged in");
     });
     //called when user logs out, and user must be set to null again
     netlifyIdentity.on("logout", () => {
-      console.log("logged out");
       setUser(null);
       //state update for <Message/>
       onOpen();
       setMessage("Logged out");
+      console.log("logged out");
+    });
+    netlifyIdentity.on("init", user => {
+      setUser(user);
+      setAuthoReady(true);
+      console.log("init event");
     });
     //initializes netlify identity when component is mounted
     netlifyIdentity.init();
-    //useEffect runs AFTER components have mounted
-    //so user is NOT initialied on the beginning
-    //which means, we don't know whether the user is logged in or not
-    //so we control it is with a loading state to handle this asynchronous task
-    setLoading(false);
 
     //cleanup
     return () => {
@@ -89,13 +100,12 @@ const AuthContextComponent = ({ children }) => {
       netlifyIdentity.off("logout");
     };
   }, []);
+
   return (
     <AuthContext.Provider value={contextValues}>
       {children}
     </AuthContext.Provider>
   );
 };
-//custom useAuth hook, which allows for easier use of the Auth context
-export const useAuth = () => useContext(AuthContext);
 
 export default AuthContextComponent;

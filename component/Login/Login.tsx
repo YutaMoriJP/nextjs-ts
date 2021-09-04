@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 const Login = () => {
   //const { onClose, onOpen, open } = useOpen(false);
-  const { login, logout, user, loading } = useAuth();
+  const { login, logout, user, authReady } = useAuth();
 
   console.log(`Login rendered`, user);
 
@@ -22,7 +22,7 @@ const Login = () => {
   return (
     <>
       <Button onClick={handleClick} className={styles.btn}>
-        {loading ? "Loading..." : !user ? "LOGIN" : "LOGOUT"}
+        {!user ? "LOGIN" : "LOGOUT"}
       </Button>
     </>
   );
