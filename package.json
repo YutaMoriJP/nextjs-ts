@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "axios": "^0.21.1",
     "netlify-identity-widget": "^1.9.2",
     "netlify-plugin-a11y": "^0.0.12",
