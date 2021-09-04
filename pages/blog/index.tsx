@@ -1,29 +1,34 @@
 import { useEffect } from "react";
 import { GetStaticProps } from "next";
 import styles from "./styles.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import asyncReq from "./util/asyncReq";
 
-type Data = {
-  title: string;
+export type Data = {
   id: number;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  website: string;
 };
-interface BlogProps {
+
+export interface BlogProps {
   data: Array<Data>;
 }
 
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: { data: Data[] };
 }> => {
-  return {
-    props: {
-      data: [
-        { title: "First Post", id: 0 },
-        { title: "Second Post", id: 1 },
-      ],
-    },
-  };
+  const data = await asyncReq();
+  return { props: { data } };
 };
 
 const Blog = ({ data }: BlogProps): JSX.Element => {
+  const router = useRouter();
+  console.log(router);
+
   useEffect((): (() => void) => {
     console.log("Blog was mounted");
     return (): void => {
@@ -33,9 +38,11 @@ const Blog = ({ data }: BlogProps): JSX.Element => {
   return (
     <>
       <ul className={styles.listContainer}>
-        {data.map(({ title, id }) => (
+        {data.map(({ username, id }) => (
           <li key={id} className={styles.listItemContainer}>
-            {title}
+            <Link href={`${router.pathname}/${id}`}>
+              <a>{username}</a>
+            </Link>
           </li>
         ))}
       </ul>

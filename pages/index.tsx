@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../stores/authContext";
 import CardContainer from "../component/Card/CardContainer";
+import styles from "../styles/Home.module.css";
 
 interface Data {
   postId: number;
@@ -57,7 +58,11 @@ const Home = () => {
   }, [user, authReady]);
   return (
     <>
-      {!loggedIn && <p>{msg}</p>}
+      {!loggedIn && msg && (
+        <p className={styles.alert} role="alert">
+          {msg}
+        </p>
+      )}
       {loggedIn && <CardContainer data={data} />}
     </>
   );
