@@ -1,8 +1,6 @@
 import Link from "next/link";
 import style from "./style.module.css";
 import Login from "../Login/Login";
-import useOpen from "../../useHooks/useOpen";
-import React, { useState } from "react";
 import Message from "../Message/Message";
 import { useAuth } from "../../stores/authContext";
 
