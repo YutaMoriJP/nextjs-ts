@@ -38,7 +38,7 @@ const BlogPage = ({ data }) => {
   console.log(data);
   return (
     <article className={styles.listItemContainer}>
-      <h1>{data.name}</h1>
+      <p>{data.name}</p>
       <p>{data.username}</p>
       <p>{data.email}</p>
     </article>
