@@ -36,11 +36,18 @@ const Home = () => {
         );
         console.log("has authorization headers", headers.has("Authorization"));
 
-        const res = await fetch("/.netlify/functions/authenticate", {
-          method: "GET",
-          headers,
-          signal,
-        });
+        const queryStrings = headers.has("Authorization")
+          ? "?loggedIn=true"
+          : "?loggedIn=false";
+
+        const res = await fetch(
+          "/.netlify/functions/authenticate" + queryStrings,
+          {
+            method: "GET",
+            headers,
+            signal,
+          }
+        );
         const data = await res.json();
         if (!isCanceled) {
           console.log(data);

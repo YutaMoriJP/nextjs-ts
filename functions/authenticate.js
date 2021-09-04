@@ -13,16 +13,18 @@ const asyncReq = async () => {
 exports.handler = async (event, context) => {
   const data = await asyncReq();
   const { identity, user } = context.clientContext;
+  const loggedIn = event.queryStringParameters.loggedIn === "true";
 
   if (user) {
     return {
-      user,
-      clientContext: context.clientContext,
       statusCode: 200,
       body: JSON.stringify({
         msg: "connected successfully",
         data,
-        loggedIn: true,
+        loggedIn,
+        user,
+        params: event.queryStringParameters,
+        clientContext: context.clientContext,
       }),
     };
   }
@@ -31,7 +33,7 @@ exports.handler = async (event, context) => {
     statusCode: 401,
     body: JSON.stringify({
       msg: "To view the content please log in.",
-      logged: false,
+      loggedIn,
       user,
       clientContext: context.clientContext,
       identity,
