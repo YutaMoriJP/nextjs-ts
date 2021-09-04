@@ -23,7 +23,7 @@ const NotFound = () => {
       <article className={style.container}>
         <h1>
           The page{" "}
-          <span style={{ background: "darkslategrey", color: "black" }}>
+          <span style={{ background: "#3f5f5f", color: "black" }}>
             {router.asPath}
           </span>{" "}
           was not found.
