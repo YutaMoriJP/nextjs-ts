@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { Data } from "./index";
 import styles from "./styles.module.css";
-import asyncReq from "./util/asyncReq";
+import { asyncReq } from "./util/asyncReq";
 
 interface PathsData {
   params: { id: string };

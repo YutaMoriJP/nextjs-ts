@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import asyncReq from "./util/asyncReq";
+import { asyncReq } from "./util/asyncReq";
 
 //represents object data returned from API
 export type Data = {
