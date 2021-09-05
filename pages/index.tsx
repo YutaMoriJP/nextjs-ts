@@ -19,7 +19,7 @@ interface Res {
   loading: boolean;
 }
 
-const Home = () => {
+const Home = (): JSX.Element => {
   const { user, authReady } = useAuth();
   const [{ data, msg, loggedIn, loading }, setData] = useState<Res>({
     data: null,
@@ -28,9 +28,9 @@ const Home = () => {
     loading: false,
   });
 
-  useEffect(() => {
+  useEffect((): (() => void) => {
     let isCanceled = false;
-    const asyncReq = async () => {
+    const asyncReq = async (): Promise<void> => {
       setData(prev => ({ ...prev, loading: true }));
 
       try {
@@ -65,11 +65,12 @@ const Home = () => {
       }
     };
     asyncReq();
-    return () => {
+    return (): void => {
       console.log("HOME WAS UNMOUNTED");
       isCanceled = true;
     };
   }, [user, authReady]);
+
   return (
     <>
       {loading && (

@@ -6,7 +6,7 @@ const initialContextValue = {
   login: () => {},
   logout: () => {},
   onClose: () => {},
-  user: undefined,
+  user: null,
   authReady: false,
   message: "",
   open: false,
@@ -31,7 +31,7 @@ export const useAuth = () => useContext(AuthContext);
 
 const AuthContextComponent = ({ children }) => {
   //stores user data when logged in
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const [authReady, setAuthoReady] = useState(false);
 

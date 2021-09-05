@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   const { identity, user } = context.clientContext;
   const loggedIn = event.queryStringParameters.loggedIn === "true";
 
-  if (user) {
+  if (loggedIn) {
     return {
       statusCode: 200,
       body: JSON.stringify({
