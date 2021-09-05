@@ -1,4 +1,19 @@
 
+.title {
+    text-align: center;
+    text-transform: uppercase;
+ }
+
+ .text {
+     text-align: center;
+  }
+ .code {
+     background:lightgray;
+     padding: 5px;
+     border-radius: 5px;
+     font-weight: bold;
+ }
+
 .listContainer {
     display: flex;
     flex-direction: column;
@@ -7,16 +22,19 @@
 
 .listItemContainer {
     display: flex;
-    background: lightcyan;
+    background: #dbe4ff;
     padding:0;
     justify-content: space-between;
     border-left: 20px solid transparent;
+    flex-wrap:wrap;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding:20px;
     box-shadow: 5px 5px 30px lightgray;
     margin: 15px;
     align-items: center;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .listItemContainer:hover {

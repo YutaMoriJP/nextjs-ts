@@ -1,3 +1,9 @@
+.alertContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+}
 .alert {
   color: cornsilk;
   display: block;
@@ -15,9 +21,19 @@
   line-height: 25px;
 }
 
-
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.text {
+  text-align: center;
+  padding: 5px;
+}
+
+.code {
+  padding: 5px;
+  background:lightgray;
+  border-radius: 5px;
 }

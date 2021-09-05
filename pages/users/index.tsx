@@ -32,6 +32,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<StaticRes> => {
   return { props: { data } };
 };
 
+//data prop is passed from getStaticProps
 const Blog = ({ data }: BlogProps): JSX.Element => {
   const { pathname } = useRouter();
 
@@ -44,13 +45,20 @@ const Blog = ({ data }: BlogProps): JSX.Element => {
 
   return (
     <>
+      <h1 className={styles.title}>Users</h1>
+      <p className={styles.text}>
+        Dummy data returned from{" "}
+        <code className={styles.code}>
+          https://jsonplaceholder.typicode.com/users/
+        </code>
+      </p>
       <ul className={styles.listContainer}>
-        {data.map(({ username, id }) => (
-          <li key={id} className={styles.listItemContainer}>
-            <Link href={`${pathname}/${id}`}>
-              <a>{username}</a>
-            </Link>
-          </li>
+        {data.map(({ name, id }) => (
+          <Link href={`${pathname}/${id}`}>
+            <li key={id} className={styles.listItemContainer}>
+              <a>{name}</a>
+            </li>
+          </Link>
         ))}
       </ul>
     </>

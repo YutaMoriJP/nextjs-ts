@@ -4,24 +4,50 @@ import CardContainer from "../component/Card/CardContainer";
 import styles from "../styles/Home.module.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-interface Data {
+//data is requested and returned from netlify function, but it's only returned when user is authorized(logged in)
+type Data = {
   postId: number;
   id: number;
   name: string;
   email: string;
   body: string;
-}
+};
 
-interface Res {
+type Res = {
   data: Data[];
   msg: string;
-  loggedIn: boolean;
-  loading: boolean;
-}
+  loggedIn: true;
+};
+
+type IndexData =
+  | {
+      data: Data[];
+      msg: string;
+      loggedIn: true;
+      loading: false;
+    }
+  | {
+      data: [];
+      msg: string;
+      loggedIn: false;
+      loading: false;
+    }
+  | {
+      data: null;
+      msg: string;
+      loggedIn: false;
+      loading: false;
+    }
+  | {
+      data: null;
+      msg: string;
+      loggedIn: false;
+      loading: true;
+    };
 
 const Home = (): JSX.Element => {
   const { user, authReady } = useAuth();
-  const [{ data, msg, loggedIn, loading }, setData] = useState<Res>({
+  const [{ data, msg, loggedIn, loading }, setData] = useState<IndexData>({
     data: null,
     msg: "",
     loggedIn: false,
@@ -31,20 +57,18 @@ const Home = (): JSX.Element => {
   useEffect((): (() => void) => {
     let isCanceled = false;
     const asyncReq = async (): Promise<void> => {
-      setData(prev => ({ ...prev, loading: true }));
-
+      setData({ data: null, msg: "", loggedIn: false, loading: true });
       try {
         const controller = new AbortController();
-        const signal = controller.signal;
+        const signal = controller.signal; //used to cancel fetch request
+        //only pass the headers object if the user is logged in
         const headers = new Headers(
           user ? { Authorization: `Bearer ${user.token.access_token}` } : {}
         );
-        console.log("has authorization headers", headers.has("Authorization"));
-
+        //only pass the query string loggedIn=true, if user is authorized
         const queryStrings = headers.has("Authorization")
           ? "?loggedIn=true"
           : "?loggedIn=false";
-
         const res = await fetch(
           "/.netlify/functions/authenticate" + queryStrings,
           {
@@ -53,9 +77,10 @@ const Home = (): JSX.Element => {
             signal,
           }
         );
-        const data = await res.json();
+        const data: Res = await res.json();
+        //if component unmounts, then isCanceled will point to true, which makes !isCanceled false
+        //used to make sure that state does not get updated in an unmounted component
         if (!isCanceled) {
-          console.log(data);
           setData({ ...data, loading: false });
         }
       } catch (error) {
@@ -79,12 +104,24 @@ const Home = (): JSX.Element => {
         </article>
       )}
       {!loggedIn && msg && (
-        <p className={styles.alert} role="alert">
-          {msg}
-        </p>
+        <article className={styles.alertContainer}>
+          <p className={styles.alert} role="alert">
+            {msg}
+          </p>
+        </article>
       )}
 
-      {loggedIn && <CardContainer data={data} />}
+      {loggedIn && (
+        <>
+          <p className={styles.text}>
+            Dummy data returned from{" "}
+            <code className={styles.code}>
+              https://jsonplaceholder.typicode.com/comments/
+            </code>
+          </p>
+          <CardContainer data={data} />
+        </>
+      )}
     </>
   );
 };

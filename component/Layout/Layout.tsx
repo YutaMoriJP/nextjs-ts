@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Nav
         data={[
           { name: "HOME", path: "/", id: 0 },
-          { name: "BLOG", path: "/blog", id: 1 },
+          { name: "USERS", path: "/users", id: 1 },
         ]}
       />
       <main className={style.main}>{children}</main>

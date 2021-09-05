@@ -8,9 +8,15 @@ interface CardProps {
 const Card = ({ name, email, body }: CardProps) => {
   return (
     <article className={styles.item}>
-      <h1>{name}</h1>
-      <p>{email}</p>
-      <p>body</p>
+      <h1>
+        <strong>TITLE</strong> - {name}
+      </h1>
+      <p>
+        <strong>EMAIL</strong> - {email}
+      </p>
+      <p>
+        <strong>COMMENT</strong> - {body}
+      </p>
     </article>
   );
 };

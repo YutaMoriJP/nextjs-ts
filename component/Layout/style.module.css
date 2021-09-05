@@ -29,7 +29,15 @@
     margin: 0 10px;
 }
 
+.last{
+      margin-right: auto !important;
+}
+
 .nav > a:hover {
     text-decoration: underline wavy white;
 }
  
+.greeting {
+    font-weight: 600;
+    color: #e7f5ff;
+}

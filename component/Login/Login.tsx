@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../stores/authContext";
 import Button from "../Button/Button";
 import styles from "./styles.module.css";

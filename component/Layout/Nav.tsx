@@ -15,17 +15,34 @@ interface NavProps {
 }
 
 const Nav = ({ data }: NavProps) => {
-  const { message, onClose, open, authReady } = useAuth();
+  const { message, onClose, open, authReady, user } = useAuth();
+  console.log("authReady", authReady);
+  console.log("user", user);
   return (
     <>
       <nav className={style.nav}>
         <>
-          {data.map(({ path, name, id }: NavData) => (
-            <Link href={path} key={id}>
-              {name}
-            </Link>
-          ))}
-          {authReady && <Login />}
+          {data.map(
+            ({ path, name, id }: NavData, index, thisArg: Array<NavData>) => {
+              return (
+                <Link href={path} key={id}>
+                  <a className={index === thisArg.length - 1 ? style.last : ""}>
+                    {name}
+                  </a>
+                </Link>
+              );
+            }
+          )}
+          {authReady && (
+            <>
+              {user && (
+                <p className={style.greeting}>
+                  Hi, {user.user_metadata.full_name}
+                </p>
+              )}
+              <Login />
+            </>
+          )}
         </>
       </nav>
       {open && (

@@ -1,4 +1,4 @@
-import { Data } from "../pages/blog/index";
+import { Data } from "../pages/users/index";
 
 export const asyncReq = async (): Promise<Data[]> => {
   const url = "https://jsonplaceholder.typicode.com/users/";

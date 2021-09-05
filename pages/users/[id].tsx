@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { Data } from "./index";
 import styles from "./styles.module.css";
@@ -51,12 +50,11 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 const BlogPage = ({ data }) => {
-  const router = useRouter();
   return (
     <article className={styles.listItemContainer}>
-      <p>{data.name}</p>
-      <p>{data.username}</p>
-      <p>{data.email}</p>
+      <p>NAME - {data.name}</p>
+      <p>USERNAME - {data.username}</p>
+      <p>EMAIL - {data.email}</p>
     </article>
   );
 };
