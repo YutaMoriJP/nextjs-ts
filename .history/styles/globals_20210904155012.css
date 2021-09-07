@@ -7,12 +7,6 @@ body {
   background-color: #ced4da;
 }
 
-@media screen and (max-width:600px) {
-  html {
-    font-size: 12px;
-  }
-}
-
 a {
   color: inherit;
   text-decoration: none;

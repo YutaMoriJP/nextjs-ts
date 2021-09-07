@@ -7,8 +7,6 @@
  .text {
      text-align: center;
      line-height: 2rem;
-     word-wrap: break-word;
-     padding: 5px;
   }
  .code {
      background:lightgray;

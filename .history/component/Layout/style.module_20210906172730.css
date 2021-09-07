@@ -29,10 +29,9 @@
     margin: 0 10px;
 }
 
-@media screen and (max-width:450px){
-    .nav > * {
-        flex: 1 1 auto;
-    }
+@media screen and (min-width:450px){
+    flex: 1 1 auto;
+
 }
 
 .last{

@@ -30,8 +30,6 @@
 .text {
   text-align: center;
   padding: 5px;
-  line-height: 2rem;
-  word-wrap: break-word;
 }
 
 .code {

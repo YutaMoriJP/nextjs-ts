@@ -6,9 +6,7 @@
 
  .text {
      text-align: center;
-     line-height: 2rem;
-     word-wrap: break-word;
-     padding: 5px;
+     line-height: 3rem;
   }
  .code {
      background:lightgray;
