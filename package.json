@@ -10,6 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "axios": "^0.21.1",
+    "fuse.js": "^6.4.6",
     "netlify-identity-widget": "^1.9.2",
     "netlify-plugin-a11y": "^0.0.12",
     "next": "11.1.2",

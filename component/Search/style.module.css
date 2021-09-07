@@ -1,0 +1,39 @@
+.alert {
+    color: #c92a2a;
+    font-weight: 600;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+} 
+
+.form > * {
+    margin: 5px;
+} 
+
+.input {
+    padding:10px 20px;
+    border:1px solid #91a7ff;
+    border-radius:5px;
+    margin: 2px;
+}
+
+.input:acitve {
+    border:5px solid #364fc7;
+}
+
+.button {
+    background-color: #364fc7;
+    padding: 8px;
+    color: white;
+    border: 1px solid #364fc7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: black;
+}

@@ -1,0 +1,16 @@
+.alert {
+    color: #c92a2a;
+    font-weight: 600;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+} 
+
+.input {
+    padding:10px 20px;
+    border:1px solid #edf2ff;
+    border-radius:5px;
+}

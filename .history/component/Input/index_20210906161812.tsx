@@ -6,7 +6,6 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   hasSubmitted: boolean;
-  [x: string]: any;
 }
 
 const Input = ({
@@ -14,11 +13,10 @@ const Input = ({
   type = "text",
   placeholder = "Type...",
   hasSubmitted,
-  ...rest
-}: InputProps): JSX.Element => {
+}: InputProps) => {
   const [inputProps, reset] = useInput("");
 
-  useEffect((): void => {
+  useEffect(() => {
     reset();
   }, [hasSubmitted]);
   return (
@@ -30,7 +28,6 @@ const Input = ({
         id={name}
         placeholder={placeholder}
         {...inputProps}
-        {...rest}
       />
     </>
   );

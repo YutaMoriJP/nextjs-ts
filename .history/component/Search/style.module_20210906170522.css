@@ -1,0 +1,10 @@
+.alert {
+    color: lightsalmon;
+    font-weight: 600;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}

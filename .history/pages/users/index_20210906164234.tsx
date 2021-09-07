@@ -53,7 +53,7 @@ const Blog = ({ data }: BlogProps): JSX.Element => {
           https://jsonplaceholder.typicode.com/users/
         </code>
       </p>
-      <Search data={data} />
+      <Search />
 
       <ul className={styles.listContainer}>
         {data.map(({ name, id }) => (

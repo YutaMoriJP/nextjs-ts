@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { asyncReq } from "../../util/asyncReq";
-import Search from "../../component/Search";
+import Search from "../../component/Search/Search";
 
 //represents object data returned from API
 export type Data = {
@@ -53,12 +53,11 @@ const Blog = ({ data }: BlogProps): JSX.Element => {
           https://jsonplaceholder.typicode.com/users/
         </code>
       </p>
-      <Search data={data} />
-
+      <Search></Search>
       <ul className={styles.listContainer}>
         {data.map(({ name, id }) => (
-          <Link href={`${pathname}/${id}`} key={id}>
-            <li className={styles.listItemContainer}>
+          <Link href={`${pathname}/${id}`}>
+            <li key={id} className={styles.listItemContainer}>
               <a>{name}</a>
             </li>
           </Link>

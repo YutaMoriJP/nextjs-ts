@@ -6,7 +6,7 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   hasSubmitted: boolean;
-  [x: string]: any;
+  className: {};
 }
 
 const Input = ({
