@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <title>{title}</title>
       </Head>
-      <QueryClientProvider client={queryClient}>
+      <QueryClientProvider>
         <AuthContextComponent>
           <Layout>
             <Component {...pageProps} />

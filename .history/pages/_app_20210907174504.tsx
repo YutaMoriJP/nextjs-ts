@@ -21,13 +21,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <title>{title}</title>
       </Head>
-      <QueryClientProvider client={queryClient}>
-        <AuthContextComponent>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </AuthContextComponent>
-      </QueryClientProvider>
+      <AuthContextComponent>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthContextComponent>
     </>
   );
 }

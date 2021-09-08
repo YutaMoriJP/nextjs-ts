@@ -5,9 +5,6 @@ import { useRouter, NextRouter } from "next/router";
 import { formatName } from "../util/formatName";
 import AuthContextComponent from "../stores/authContext";
 import { AppProps } from "next/app";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const { asPath }: NextRouter = useRouter();
@@ -20,14 +17,12 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <Head>
         <title>{title}</title>
-      </Head>
-      <QueryClientProvider client={queryClient}>
-        <AuthContextComponent>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </AuthContextComponent>
-      </QueryClientProvider>
+      </Head>{" "}
+      <AuthContextComponent>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>{" "}
+      </AuthContextComponent>
     </>
   );
 }
