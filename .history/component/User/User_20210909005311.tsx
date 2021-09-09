@@ -12,7 +12,7 @@ const User = ({ data, loggedIn }): JSX.Element => {
   });
   console.log("data in User is", data);
 
-  console.log("renderData in User is", renderData);
+  console.log("data in User is", data);
 
   return (
     <>

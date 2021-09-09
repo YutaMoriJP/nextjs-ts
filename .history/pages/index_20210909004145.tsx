@@ -60,7 +60,7 @@ const Home = (): JSX.Element => {
   const { data, msg, loggedIn, loading } = userData;
 
   // const [renderData, setRenderData] = useState(null);
-  useLocalStorage(storageKey, data);
+  //useLocalStorage(storageKey, data);
 
   useEffect((): (() => void) => {
     console.log("useEffect user", user);
@@ -96,7 +96,6 @@ const Home = (): JSX.Element => {
         //if component unmounts, then isCanceled will point to true, which makes !isCanceled false
         //used to make sure that state does not get updated in an unmounted component
         if (!isCanceled) {
-          console.log(`Index sets data`);
           setData({ ...data, loading: false });
         }
       } catch (error) {

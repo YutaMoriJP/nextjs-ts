@@ -8,7 +8,7 @@ type Option = { serialize: typeof serialize; deserialize: typeof deserialize };
 const useLocalStorage = (
   key: string,
   value: any,
-  { setState, state } = { setState: (data: any) => null, state: "null" },
+  setState?: (data: any) => void,
   option: Option = { serialize, deserialize }
 ): {
   remove: () => void;
@@ -47,10 +47,6 @@ const useLocalStorage = (
       window.localStorage.removeItem(previousKey);
     }
     //set storage with new value
-    if (state === null) {
-      console.log("//set storage with new value");
-      setState(value);
-    }
     option.serialize(key, value);
   }, [key, value]);
 
@@ -62,3 +58,6 @@ const useLocalStorage = (
 };
 
 export default useLocalStorage;
+function usetate(): [any, any] {
+  throw new Error("Function not implemented.");
+}

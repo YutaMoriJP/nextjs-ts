@@ -60,7 +60,7 @@ const Home = (): JSX.Element => {
   const { data, msg, loggedIn, loading } = userData;
 
   // const [renderData, setRenderData] = useState(null);
-  useLocalStorage(storageKey, data);
+  // useLocalStorage(storageKey, data);
 
   useEffect((): (() => void) => {
     console.log("useEffect user", user);

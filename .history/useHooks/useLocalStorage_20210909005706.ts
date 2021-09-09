@@ -8,7 +8,7 @@ type Option = { serialize: typeof serialize; deserialize: typeof deserialize };
 const useLocalStorage = (
   key: string,
   value: any,
-  { setState, state } = { setState: (data: any) => null, state: "null" },
+  { setState, state } = { setState: () => null, state: "null" },
   option: Option = { serialize, deserialize }
 ): {
   remove: () => void;
