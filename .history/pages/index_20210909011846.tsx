@@ -67,8 +67,7 @@ const Home = (): JSX.Element => {
     console.log("useEffect previousUser", previousUser);
     console.log("are equal", user === previousUser);
     const isStored = deserialize(storageKey);
-    console.log("isStored", isStored);
-    if (user !== null && user === previousUser && isStored) {
+    if (user !== null && user === previousUser && !isStored) {
       console.log("data is still equal so do not fetch data");
       return;
     }

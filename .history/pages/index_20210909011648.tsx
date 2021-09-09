@@ -60,15 +60,13 @@ const Home = (): JSX.Element => {
   const { data, msg, loggedIn, loading } = userData;
 
   // const [renderData, setRenderData] = useState(null);
-  const { deserialize } = useLocalStorage(storageKey, data);
+  useLocalStorage(storageKey, data);
 
   useEffect((): (() => void) => {
     console.log("useEffect user", user);
     console.log("useEffect previousUser", previousUser);
     console.log("are equal", user === previousUser);
-    const isStored = deserialize(storageKey);
-    console.log("isStored", isStored);
-    if (user !== null && user === previousUser && isStored) {
+    if (user !== null && user === previousUser) {
       console.log("data is still equal so do not fetch data");
       return;
     }

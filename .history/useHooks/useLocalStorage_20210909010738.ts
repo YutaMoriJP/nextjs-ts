@@ -38,15 +38,19 @@ const useLocalStorage = (
   }, []);
 
   useEffect((): void => {
-    if (value === null) return;
+    if (renderCount === 0) {
+      //prevent setting storage in initial render
+      return;
+    }
     if (previousKey !== key) {
       //key value has changed, so remove previous storage
       window.localStorage.removeItem(previousKey);
     }
     //set storage with new value
-
-    console.log("uselocalsto");
-    setState(value);
+    if (state === null) {
+      console.log("//set storage with new value");
+      setState(value);
+    }
     option.serialize(key, value);
   }, [key, value]);
 

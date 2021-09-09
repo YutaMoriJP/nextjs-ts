@@ -44,9 +44,11 @@ const useLocalStorage = (
       window.localStorage.removeItem(previousKey);
     }
     //set storage with new value
-
+    if (state === null) {
+      console.log("//set storage with new value");
+      setState(value);
+    }
     console.log("uselocalsto");
-    setState(value);
     option.serialize(key, value);
   }, [key, value]);
 
