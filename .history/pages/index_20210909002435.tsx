@@ -124,19 +124,8 @@ const Home = (): JSX.Element => {
           </p>
         </article>
       )}
-
-      {/*     {loggedIn && (
-        <>
-          <p className={styles.text}>
-            Dummy data returned from{" "}
-            <code className={styles.code}>
-              https://jsonplaceholder.typicode.com/comments/
-            </code>
-          </p>
-          <CardContainer data={data} />
-        </>
-      )} */}
-      {<User data={data} loggedIn={false} />}
+      {loggedIn &&       <User data={data} />}
+}
     </>
   );
 };

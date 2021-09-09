@@ -9,15 +9,17 @@ const User = ({ data, loggedIn }): JSX.Element => {
   useLocalStorage(storageKey, data, setRenderData);
   return (
     <>
-      <div>
-        <p className={styles.text}>
-          Dummy data returned from{" "}
-          <code className={styles.code}>
-            https://jsonplaceholder.typicode.com/comments/
-          </code>
-        </p>
-        {renderData && <CardContainer data={renderData} />}
-      </div>
+      {loggedIn && (
+        <div>
+          <p className={styles.text}>
+            Dummy data returned from{" "}
+            <code className={styles.code}>
+              https://jsonplaceholder.typicode.com/comments/
+            </code>
+          </p>
+          {renderData && <CardContainer data={renderData} />}
+        </div>
+      )}
     </>
   );
 };
