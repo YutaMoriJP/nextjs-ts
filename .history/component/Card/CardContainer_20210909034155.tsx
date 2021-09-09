@@ -4,7 +4,7 @@ import { useState } from "react";
 import Pagination from "../Pagination/index";
 import { UserProps } from "../User/User";
 
-const filteredData = (data: any[], num: number) => {
+const filteredData = (data: any[], num: number): UserProps => {
   const start = (num - 1) * 10;
   const end = num * 10;
   return data.slice(start, end);

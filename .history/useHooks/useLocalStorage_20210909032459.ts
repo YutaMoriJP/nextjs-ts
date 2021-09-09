@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import usePrevious from "./usePrevious";
 import { serialize, deserialize } from "../util/localStorage";
+import useInitialRender from "./useInitialRender";
 
 type Option = { serialize: typeof serialize; deserialize: typeof deserialize };
 
 const useLocalStorage = (
   key: string,
   value: any,
-  setState?: React.Dispatch<React.SetStateAction<any>>,
+  { setState, state } = { setState: (data: any) => null, state: "null" },
   option: Option = { serialize, deserialize }
 ): {
   remove: () => void;
@@ -38,7 +39,8 @@ const useLocalStorage = (
       window.localStorage.removeItem(previousKey);
     }
     //set storage with new value
-    setState && setState(value);
+
+    setState(value);
     option.serialize(key, value);
   }, [key, value]);
 

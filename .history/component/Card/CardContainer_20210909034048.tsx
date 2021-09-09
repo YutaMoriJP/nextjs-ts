@@ -3,7 +3,7 @@ import Card from "./Card";
 import { useState } from "react";
 import Pagination from "../Pagination/index";
 import { UserProps } from "../User/User";
-
+import { Data } from "../User/User";
 const filteredData = (data: any[], num: number) => {
   const start = (num - 1) * 10;
   const end = num * 10;

@@ -38,7 +38,7 @@ const useLocalStorage = (
       window.localStorage.removeItem(previousKey);
     }
     //set storage with new value
-    setState && setState(value);
+    setState(value);
     option.serialize(key, value);
   }, [key, value]);
 

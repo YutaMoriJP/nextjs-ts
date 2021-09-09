@@ -11,8 +11,7 @@ export interface UserProps {
 }
 
 const User = ({ data }: UserProps): JSX.Element => {
-  const { user } = useAuth(); //if user points at null, then the user is NOT logged in
-  //so don't render the component below
+  const { user } = useAuth();
   const [renderData, setRenderData] = useState(() => data);
   useLocalStorage(storageKey, data, setRenderData);
   return (

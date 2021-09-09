@@ -2,7 +2,6 @@ import styles from "./styles.module.css";
 import Card from "./Card";
 import { useState } from "react";
 import Pagination from "../Pagination/index";
-import { UserProps } from "../User/User";
 
 const filteredData = (data: any[], num: number) => {
   const start = (num - 1) * 10;
@@ -10,7 +9,7 @@ const filteredData = (data: any[], num: number) => {
   return data.slice(start, end);
 };
 
-const CardContainer = ({ data }: UserProps): JSX.Element => {
+const CardContainer = ({ data }) => {
   const [pages, setPages] = useState(1);
   const handleClick = (newPage: number) => setPages(newPage);
 
@@ -18,6 +17,7 @@ const CardContainer = ({ data }: UserProps): JSX.Element => {
   const setToLast = () => setPages(50);
 
   const displayedData = filteredData(data, pages);
+  console.log(displayedData);
   return (
     <>
       <Pagination

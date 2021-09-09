@@ -6,7 +6,7 @@ import useLocalStorage from "../useHooks/useLocalStorage";
 import User from "../component/User/User";
 
 //data is requested and returned from netlify function, but it's only returned when user is authorized(logged in)
-export type Data = {
+type Data = {
   postId: number;
   id: number;
   name: string;
@@ -63,20 +63,13 @@ const Home = (): JSX.Element => {
   const { deserialize } = useLocalStorage(storageKey, data);
 
   useEffect((): (() => void) => {
-    //check if localStorage has data stored or not
-    //if it does not point at null, then data is stored
     const isStored = deserialize(storageKey);
-    //first check that user is not null, then check if user and previousUser are equal
-    //which means that user is logged in as it cannot be null
-    //in addition, if isStored points at anything not falsy, then data is also stored
-    //this means that requesting the data is not necessary
     if (user !== null && user === previousUser && isStored) {
       console.log("data is still equal so do not fetch data");
       return;
     }
     let isCanceled = false;
     const asyncReq = async (): Promise<void> => {
-      //set loading to true
       setData({ data: null, msg: "", loggedIn: false, loading: true });
       try {
         const controller = new AbortController();
@@ -101,7 +94,7 @@ const Home = (): JSX.Element => {
         //if component unmounts, then isCanceled will point to true, which makes !isCanceled false
         //used to make sure that state does not get updated in an unmounted component
         if (!isCanceled) {
-          console.log(`Index sets user data`);
+          console.log(`Index sets data`);
           setData({ ...data, loading: false });
         }
       } catch (error) {
@@ -130,7 +123,7 @@ const Home = (): JSX.Element => {
           </p>
         </article>
       )}
-      <User data={data} />
+      <User data={data} loggedIn={loggedIn} />
     </>
   );
 };

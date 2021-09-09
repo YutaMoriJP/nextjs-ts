@@ -13,6 +13,7 @@ const asyncReq = async () => {
 exports.handler = async (event, context) => {
   const data = await asyncReq();
   const loggedIn = event.queryStringParameters.loggedIn === "true";
+
   if (loggedIn) {
     return {
       statusCode: 200,

@@ -35,7 +35,6 @@ export const useAuth = () => useContext(AuthContext);
 const AuthContextComponent = ({ children }) => {
   //stores user data when logged in
   const [user, setUser] = useState<User | null>(null);
-  //used to check if user was already logged in or not, used index.tsx
   const previousUser = usePrevious(user);
   const [authReady, setAuthoReady] = useState(false);
 

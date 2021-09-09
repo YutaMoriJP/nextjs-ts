@@ -6,7 +6,7 @@ import useLocalStorage from "../useHooks/useLocalStorage";
 import User from "../component/User/User";
 
 //data is requested and returned from netlify function, but it's only returned when user is authorized(logged in)
-export type Data = {
+type Data = {
   postId: number;
   id: number;
   name: string;
@@ -130,7 +130,7 @@ const Home = (): JSX.Element => {
           </p>
         </article>
       )}
-      <User data={data} />
+      <User data={data} loggedIn={loggedIn} />
     </>
   );
 };

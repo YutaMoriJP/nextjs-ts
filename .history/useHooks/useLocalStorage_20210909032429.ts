@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import usePrevious from "./usePrevious";
 import { serialize, deserialize } from "../util/localStorage";
+import useInitialRender from "./useInitialRender";
 
 type Option = { serialize: typeof serialize; deserialize: typeof deserialize };
 
 const useLocalStorage = (
   key: string,
   value: any,
-  setState?: React.Dispatch<React.SetStateAction<any>>,
+  { setState, state } = { setState: (data: any) => null, state: "null" },
   option: Option = { serialize, deserialize }
 ): {
   remove: () => void;
@@ -24,11 +25,14 @@ const useLocalStorage = (
     const storedItem = option.deserialize(key);
     if (storedItem === null) {
       //if storedItem points at null, it means nothing was stored
+      console.log(`data is`, value);
       setState(value);
     } else {
+      console.log("data is initialized by uselocalstorage!");
       //this block only runs if localStorage had some data
       setState(storedItem);
     }
+    console.log("set states");
   }, []);
 
   useEffect((): void => {
@@ -38,7 +42,9 @@ const useLocalStorage = (
       window.localStorage.removeItem(previousKey);
     }
     //set storage with new value
-    setState && setState(value);
+
+    console.log("uselocalsto");
+    setState(value);
     option.serialize(key, value);
   }, [key, value]);
 

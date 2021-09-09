@@ -22,7 +22,7 @@ const getNums = (current: number) => {
 };
 
 interface PaginationProps {
-  handleClick: (data: number) => void;
+  handleClick: () => void;
   pages: number;
   setToFirst: () => void;
   setToLast: () => void;
