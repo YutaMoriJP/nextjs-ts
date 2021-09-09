@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+.container > * {
+    margin: 5px;
+}
+
+.button {
+    border-radius: 50%;
+    border: 0;
+    background-color: aquamarine;
+    cursor: pointer;
+    width: 25px;
+    padding: 4px;
+    border: 1px solid aquamarine;
+    transition: border 0.5s ease-in-out;
+}
+
+.button:hover {
+    border: 1px solid black;
+}
+
+.active {
+    background-color: #1864ab;
+    color:white;
+    border: 1px solid #1864ab;
+}

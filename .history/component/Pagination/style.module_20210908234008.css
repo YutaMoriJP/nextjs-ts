@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-self: center
+}
+.container > * {
+    margin: 5px;
+}
+
+.button {
+    border-radius: 50%;
+    border: 0;
+    background-color: aquamarine;
+    cursor: pointer;
+    width: 30px;
+}
