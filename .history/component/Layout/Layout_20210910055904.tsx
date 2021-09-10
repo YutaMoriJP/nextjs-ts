@@ -1,7 +1,7 @@
 import style from "./style.module.css";
 import Nav from "./Nav";
 import { useEffect } from "react";
-import { BiHome, BiUser } from "react-icons/bi";
+import { BiHome, BiWinkSmile } from "react-icons/bi";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,23 +18,9 @@ const Layout = ({ children }: LayoutProps) => {
     <div className={style.container}>
       <Nav
         data={[
+          { name: <BiHome className={style.icon} />, path: "/", id: 0 },
           {
-            name: (
-              <section className={style.section}>
-                <BiHome className={style.icon} />
-                <p className={style.text}>HOME</p>
-              </section>
-            ),
-            path: "/",
-            id: 0,
-          },
-          {
-            name: (
-              <section className={style.section}>
-                <BiUser className={style.icon} />
-                <p className={style.text}>USERS</p>
-              </section>
-            ),
+            name: <BiWinkSmile className={style.icon} />,
             path: "/users",
             id: 1,
           },

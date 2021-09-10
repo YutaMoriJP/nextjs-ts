@@ -20,10 +20,8 @@
 .listContainer {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    width: 100%;
-    margin: auto;
-    padding: 0;
+    padding: 0 2rem;
+    max-width: 300px;
 }
 
 .listItemContainer {

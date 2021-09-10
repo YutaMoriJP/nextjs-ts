@@ -22,9 +22,7 @@
     flex-direction: column;
     max-width: 400px;
     width: 100%;
-    margin: auto;
-    padding: 0;
-}
+ }
 
 .listItemContainer {
     display: flex;

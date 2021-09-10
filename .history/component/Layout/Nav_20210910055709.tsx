@@ -14,7 +14,7 @@ interface NavProps {
   data: Array<NavData>;
 }
 
-const Nav = ({ data }: NavProps): JSX.Element => {
+const Nav = ({ data }: NavProps) => {
   const { message, onClose, open, authReady, user } = useAuth();
 
   return (

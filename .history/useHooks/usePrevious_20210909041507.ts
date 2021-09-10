@@ -1,10 +1,7 @@
 import { useEffect, useRef } from "react";
 import useInitialRender from "./useInitialRender";
 
-const usePrevious = (
-  value: any,
-  afterInitialRender: boolean = false
-): number => {
+const usePrevious = (value: any, afterInitialRender: boolean = false) => {
   const previousRef = useRef(null);
   const renderCount = useInitialRender();
   useEffect((): void => {

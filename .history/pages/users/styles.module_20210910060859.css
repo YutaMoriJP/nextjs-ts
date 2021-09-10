@@ -20,17 +20,14 @@
 .listContainer {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    width: 100%;
-    margin: auto;
-    padding: 0;
+    padding:10px;
 }
 
 .listItemContainer {
     display: flex;
     background: #dbe4ff;
     padding:0;
-    border-left: 10px solid transparent;
+    border-left: 20px solid transparent;
     flex-wrap:wrap;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;

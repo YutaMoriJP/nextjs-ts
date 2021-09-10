@@ -19,24 +19,19 @@ const Layout = ({ children }: LayoutProps) => {
       <Nav
         data={[
           {
-            name: (
-              <section className={style.section}>
-                <BiHome className={style.icon} />
-                <p className={style.text}>HOME</p>
-              </section>
-            ),
+            name: <BiHome className={style.icon}>HOME</BiHome>,
             path: "/",
             id: 0,
           },
           {
-            name: (
-              <section className={style.section}>
-                <BiUser className={style.icon} />
-                <p className={style.text}>USERS</p>
-              </section>
-            ),
+            name: <BiUser className={style.icon}>USER</BiUser>,
             path: "/users",
             id: 1,
+          },
+          {
+            name: <article>HI</article>,
+            path: "/",
+            id: 0,
           },
         ]}
       />

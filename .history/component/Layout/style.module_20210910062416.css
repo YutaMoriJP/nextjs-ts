@@ -38,7 +38,10 @@
 .last{
       margin-right: auto !important;
 }
- 
+
+.nav > a:hover {
+    text-decoration: underline wavy white;
+}
  
 .greeting {
     font-weight: 600;
@@ -46,26 +49,15 @@
 }
 
 .icon {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2.2rem;
+    height: 2.2rem;
     border:1px solid transparent;
     transition: 0.5s padding ease-in-out;
- } 
- 
- 
-.section  {
-    display: flex;
-    align-items: center;
-    border:1px solid transparent;
-    padding: 4px;
-}
-
-.section:hover{
-    background-color: green;
+    position: relative;
+} 
+.icon:hover{
     border:1px solid white;
     border-radius: 5px;
- }
-
- .text {
-    font-size: 0.8rem;
-} 
+    padding: 2px;
+}
+ 

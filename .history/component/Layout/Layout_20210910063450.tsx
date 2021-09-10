@@ -20,9 +20,8 @@ const Layout = ({ children }: LayoutProps) => {
         data={[
           {
             name: (
-              <section className={style.section}>
+              <section>
                 <BiHome className={style.icon} />
-                <p className={style.text}>HOME</p>
               </section>
             ),
             path: "/",
@@ -30,9 +29,8 @@ const Layout = ({ children }: LayoutProps) => {
           },
           {
             name: (
-              <section className={style.section}>
+              <section>
                 <BiUser className={style.icon} />
-                <p className={style.text}>USERS</p>
               </section>
             ),
             path: "/users",

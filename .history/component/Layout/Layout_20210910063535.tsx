@@ -22,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
             name: (
               <section className={style.section}>
                 <BiHome className={style.icon} />
-                <p className={style.text}>HOME</p>
+                <p>HOME</p>
               </section>
             ),
             path: "/",
@@ -32,7 +32,7 @@ const Layout = ({ children }: LayoutProps) => {
             name: (
               <section className={style.section}>
                 <BiUser className={style.icon} />
-                <p className={style.text}>USERS</p>
+                <p>USERS</p>
               </section>
             ),
             path: "/users",
