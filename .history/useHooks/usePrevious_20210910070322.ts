@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import useInitialRender from "./useInitialRender";
 
-const usePrevious = <T>(
-  value: T,
+const usePrevious = (
+  value: any,
   afterInitialRender: boolean = false
 ): typeof value => {
   const previousRef = useRef(null);
